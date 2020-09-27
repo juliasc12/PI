@@ -30,5 +30,6 @@ def main():
             img.itemset((y,x,2),0)
 
     showImg(img)
+    cv2.imwrite("lisa_retangulo.jpg",img)
 
 main()
