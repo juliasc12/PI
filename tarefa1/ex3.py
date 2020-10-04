@@ -11,8 +11,8 @@ def showImg(img):
 def dataImg(img):
     altura, largura, canais_de_cores = img.shape
     print("Altura: " + str(altura) + " / Largura = " + str(largura) + " / Canais de Cor =  " + str(canais_de_cores))
-    bits = os.path.getsize('lisa.png')
-    print("Tamanho da imagem em bits: " + str(bits))
+    byts = os.path.getsize('lisa.png')
+    print("Tamanho da imagem em byts: " + str(byts))
 
 def main():
     img = cv2.imread("lisa.png")
