@@ -20,6 +20,7 @@ def imgAzul(img,altura,largura):
         for x in range(0,largura):
             azul,verde,vermelho = getColor(img,x,y)
             setColor(img,x,y,azul,0,0)
+
     cv2.imwrite("LisaAzul.jpg",img)
 
 def imgVerde(img,altura,largura):
@@ -36,6 +37,8 @@ def imgVermelho(img,altura,largura):
             setColor(img,x,y,0,0,vermelho)
 
     LisaVermelha = cv2.imwrite("LisaVermelha.jpg",img)
+
+
 
 def main():
     img = cv2.imread("lisa2.jpg")
