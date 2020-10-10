@@ -1,20 +1,11 @@
-import numpy as np
-import cv2
-from matplotlib import pyplot as plt
+import random
 
-def showImage(img):
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    plt.imshow(img)
-    plt.show()
+lista_certa = [7,5,4,3,1]
+lista_sorteada = [1,3,4,5,7]
+random.shuffle(lista_sorteada)
 
-def crop(img,y1,altura,x1,largura):
-    crop_img = img[ y1:altura , x1:largura ]
-    showImage(crop_img)
-    cv2.imwrite("crop.jpg",crop_img)
+while (lista_certa != lista_sorteada):
+    random.shuffle(lista_sorteada)
+    print(lista_sorteada)
 
-def main():
-    img = cv2.imread("lisa2.jpg")
-    y1=28; altura=118; x1=276; largura=375
-    crop(img,y1,altura,x1,largura)
-
-main()
+print("conseguimos!")

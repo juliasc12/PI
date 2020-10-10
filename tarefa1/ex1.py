@@ -1,11 +1,28 @@
 import random
 
-lista_certa = [7,5,4,3,1]
-lista_sorteada = [1,3,4,5,7]
-random.shuffle(lista_sorteada)
+sorteio = random.randint(0,10)
+print('Você tem 3 chances de acertar o numero sorteado')
+print('numero sorteado: ', +sorteio)
 
-while (lista_certa != lista_sorteada):
-    random.shuffle(lista_sorteada)
-    print(lista_sorteada)
+for i in range(0,3):
+    chute = int(input("Escolha seu número: "))
 
-print("conseguimos!")
+    if (chute == sorteio):
+        print('Você acertou, parabéns!')
+        break
+
+    if (chute > sorteio):
+        print('Você errou. O numero sorteado é menor')
+
+    if (chute < sorteio):
+        print('Você errou. O numero sorteado é maior')
+
+
+if(chute!=sorteio):
+    print ('O numero sorteado era: ', +sorteio)
+
+
+
+        
+
+    
