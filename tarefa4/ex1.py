@@ -29,7 +29,7 @@ def UnindoImg():
     showImage(uniao)
 
 def main():
-    InserindoTexto("Cansada!")
+    InserindoTexto("Marca!")
     UnindoImg()
 
 main()

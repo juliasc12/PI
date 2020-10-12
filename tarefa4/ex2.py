@@ -4,15 +4,15 @@ import cv2
 cap = cv2.VideoCapture(0)
 
 while (True):
-    _, frame = cap.read()
+    _, frame = cap.read() #ler a webcam e joga na variavel frame
 
     hsvImage = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
-    lowerRed = np.array([70, 50, 0])
-    upperRed = np.array([130, 255, 255])
+    azulMinimo = np.array([70, 50, 0])
+    azulMaximo = np.array([130, 255, 255])
 
     #Analisa todos os pixels da img e todos q cairem no intervalo do azul ele marca
-    mask = cv2.inRange(hsvImage, lowerRed, upperRed)
+    mask = cv2.inRange(hsvImage, azulMinimo, azulMaximo)
 
     #Pega todos os pixels marcados de branco na mascara e retorna os valores
     #RETR_TREE = retorna tds as curvas e constroi uma arvore hierarquica entre eles
