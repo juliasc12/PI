@@ -7,7 +7,7 @@ while (True):
     _, frame = cap.read() #ler a webcam e joga na variavel frame
 
     hsvImage = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-
+    #valores de azul
     azulMinimo = np.array([70, 50, 0])
     azulMaximo = np.array([130, 255, 255])
 
