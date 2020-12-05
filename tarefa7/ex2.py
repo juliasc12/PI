@@ -57,20 +57,21 @@ class GrabCutGUI(Frame):
 
             #aplicar grabcut na imagem
             mask = np.zeros(self.imagemOpenCV.shape[:2], np.uint8)
-            print(mask.shape)
             rectGcut = (int(self.startX), int(self.startY), int(event.x - self.startX), int(event.y - self.startY))
+            altura = int(event.x - self.startX)
+            largura = int(event.y - self.startY)
             fundoModel = np.zeros((1, 65), np.float64)
             objModel = np.zeros((1, 65), np.float64)
 
             #invocar grabcut
             cv2.grabCut(self.imagemOpenCV, mask, rectGcut, fundoModel, objModel, 5, cv2.GC_INIT_WITH_RECT)
-            #imgFinal =  self.imagemOpenCV * maskFinal[:,:,np.newaxis]
 
-            #preparando imagem final
-            maskFinal = np.where ((mask == 2) | (mask == 0), 0,1).astype('uint8')
-            recorte = self.imagemOpenCV * maskFinal[:,:,np.newaxis]
+            #preparando imagem final, o where att valores. em cada pos da mask ele atualiza p 0 e dps transforma p uma img 8 bits
+            maskForaRetangulo = np.where ((mask == 2) | (mask == 0), 0,1).astype('uint8')
+            recorte = self.imagemOpenCV * maskForaRetangulo[:,:,np.newaxis]
+            
             embaca = cv2.GaussianBlur(self.imagemOpenCV, (15,15), 0)
-            imgFinal = recorte + embaca
+            imgFinal = cv2.add(recorte,embaca)
 
             #converter de volta do opencv pra Tkinter
             imgFinal = cv2.cvtColor(imgFinal, cv2.COLOR_BGR2RGB)
@@ -84,6 +85,8 @@ class GrabCutGUI(Frame):
     def callbackBotaoPressionadoEmMovimento(self, event):
         currentX = self.canvas.canvasx(event.x)
         currentY = self.canvas.canvasy(event.y)
+
+        #atualiza o retangulo, x e y inic e x e y final
         self.canvas.coords(self.rect, self.startX, self.startY, currentX, currentY)
         self.rectangleReady = True
 
